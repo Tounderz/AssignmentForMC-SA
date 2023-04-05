@@ -1,0 +1,14 @@
+﻿@model AssignmentForMCСSA.Data.Models.ProductModel
+
+<div class="card" style="width: 15rem; margin: 5px">
+    <img class="card-img-top" style="height: 18rem" src="@Model.Image" />
+    <div class="card-body">
+        <h5 class="card-title">@Model.Id: @Model.Title</h5>
+        <p class="card-text">@_localization.GetKey("Price"): @Model.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</p>
+    </div>
+    <div class="card-footer bg-transparent">
+        <a class="btn btn-outline-success" style="width: 11rem; border-radius: 15px" href="/Products/Details?id=@Model.Id">
+            @_localization.GetKey("Details")
+        </a>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model AssignmentForMCСSA.Data.Models.Dto.RegistrationDto
+
+@{
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h1>@_localization.GetKey("EditAccount")</h1>
+            <form enctype="multipart/form-data" method="post" action="Edit" class="mt-5">
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Id" readonly>
+                    <label>
+                        Id
+                    </label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="FirstName">
+                    <label>
+                        @_localization.GetKey("FirstName")
+                    </label>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="LastName">
+                    <label>
+                        @_localization.GetKey("LastName")
+                    </label>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Email">
+                    <label>
+                        @_localization.GetKey("Email")
+                    </label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Login">
+                    <label>
+                        @_localization.GetKey("Login")
+                    </label>
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mt-2">
+                    <input type="file" class="form-control" asp-for="Img">
+                    <label>
+                        @_localization.GetKey("Image")
+                    </label>
+                </div>
+                <hr />
+                <button type="submit" style="width: 10rem; border-radius: 10px" class="btn btn-outline-primary">
+                    @_localization.GetKey("Save")
+                </button>
+            </form>
+            <p class="mt-5 text-center">
+                <a style="max-width: 8rem; border-radius: 10px"
+                   href="/Account/GetAccounts">
+                    @_localization.GetKey("Accounts")
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model AssignmentForMCСSA.Data.Models.Dto.RegistrationDto
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h2 class="text-center">@_localization.GetKey("DeleteAccount"): "@Model.Login"</h2>
+            <form enctype="multipart/form-data" method="post" action="Delete" class="mt-5">
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Id" readonly>
+                    <label>
+                        Id
+                    </label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="FirstName" readonly>
+                    <label>
+                        @_localization.GetKey("FirstName")
+                    </label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="LastName" readonly>
+                    <label>
+                        @_localization.GetKey("LastName")
+                    </label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Email" readonly>
+                    <label>
+                        @_localization.GetKey("Email")
+                    </label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Login" readonly>
+                    <label>
+                        @_localization.GetKey("Login") 
+                    </label>
+                </div>
+
+                <hr />
+                <button type="submit" style="width: 10rem; border-radius: 10px" class="btn btn-outline-danger">
+                    @_localization.GetKey("Delete")
+                </button>
+            </form>
+            <p class="mt-5 text-center">
+                <a
+                    style="max-width: 8rem; border-radius: 10px"
+                    href="/Account/GetAccounts">
+                    @_localization.GetKey("Accounts")
+                </a>
+            </p>
+        </div>
+    </div>
+    
+</div>

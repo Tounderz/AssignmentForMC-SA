@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AssignmentForMCСSA</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <h5 class="float-md-start mb-0">@_localization.GetKey("Task")</h5>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Products" asp-action="GetProducts">@_localization.GetKey("Home")</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @_localization.GetKey("SortingProducts")
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-controller="Products" asp-action="Sorting" asp-route-critertion="Up">@_localization.GetKey("Up")</a></li>
+                                <li><a class="dropdown-item" asp-controller="Products" asp-action="Sorting" asp-route-critertion="Down">@_localization.GetKey("Down")</a></li>
+                            </ul>
+                        </li>
+                        <form class="navbar-collapse collapse" method="post" asp-controller="Products" asp-action="Filtering">
+                            <input
+                                name="critertion"
+                                class="form-control me-2"
+                                style="max-width: 15rem"
+                                type="text"
+                                placeholder="@_localization.GetKey("FilteringProducts")">
+                            <button class="btn btn-outline-success" type="submit">
+                                @_localization.GetKey("Filtering")
+                            </button>
+                        </form>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li class="nav-item dropdow">
+                                        <a class="dropdown-item " asp-controller="Account" asp-action="GetAccounts">@_localization.GetKey("Accounts")</a>
+                                    </li>
+                                    <li class="nav-item dropdow">
+                                        <a class="dropdown-item" asp-controller="Products" asp-action="Create">@_localization.GetKey("InsertProduct")</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @_localization.GetKey("Language")
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US" class="dropdown-item">@_localization.GetKey("English")</a></li>
+                                <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="ru-RU" class="dropdown-item">@_localization.GetKey("Russian")</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="collapse d-flex">
+                        @if (string.IsNullOrEmpty(User.Identity.Name))
+                        {
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">@_localization.GetKey("SignIn")</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registration">@_localization.GetKey("SignUp")</a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">@_localization.GetKey("Logout")</a>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bottom-0 position-absolute w-100 text-center">
+        <div class="container">
+            &copy; 2023 - @_localization.GetKey("Task")
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

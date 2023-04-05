@@ -1,0 +1,33 @@
+﻿@model List<AssignmentForMCСSA.Data.Models.ApplicationUserModel>
+
+@{
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">@_localization.GetKey("FirstName")</th>
+                        <th scope="col">@_localization.GetKey("LastName")</th>
+                        <th scope="col">@_localization.GetKey("Email")</th>
+                        <th scope="col">@_localization.GetKey("EmailConfirmed")</th>
+                        <th scope="col">@_localization.GetKey("Login")</th>
+                        <th scope="col">@_localization.GetKey("PhoneNumber")</th>
+                        <th scope="col">@_localization.GetKey("Edit")</th>
+                        <th scope="col">@_localization.GetKey("EditPassword")</th>
+                        <th scope="col">@_localization.GetKey("Delete")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @await Html.PartialAsync("_AccountComponent", item);
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

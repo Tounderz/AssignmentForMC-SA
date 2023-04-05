@@ -1,0 +1,40 @@
+﻿@model AssignmentForMCСSA.Data.Models.ApplicationUserModel
+
+@{
+}
+
+<tr>
+    <th scope="row">@Model.Id</th>
+    <td>@Model.FirstName</td>
+    <td>@Model.LastName</td>
+    <td>@Model.Email</td>
+    <td>@Model.EmailConfirmed</td>
+    <td>@Model.UserName</td>
+    <td>@Model.PhoneNumber</td>
+    <td> 
+        <a 
+            class="btn btn-outline-primary" 
+            style="max-width: 8rem; border-radius: 10px"
+            href="/Account/Edit?id=@Model.Id"
+        >
+            @_localization.GetKey("Edit")
+        </a>
+    </td>
+    <td>
+        <a class="btn btn-outline-primary"
+           style="max-width: 8rem; border-radius: 10px"
+           href="/Account/ChangePassword?id=@Model.Id"
+        >
+            @_localization.GetKey("EditPassword")
+        </a>
+    </td>
+    <td>
+        <a 
+            class="btn btn-outline-danger" 
+            style="max-width: 7rem; border-radius: 10px"
+            href="/Account/Delete?id=@Model.Id"
+        >
+            @_localization.GetKey("Delete")
+        </a>
+    </td>
+</tr>

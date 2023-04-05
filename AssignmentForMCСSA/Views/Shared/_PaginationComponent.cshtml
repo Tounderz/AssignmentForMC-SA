@@ -1,0 +1,28 @@
+﻿@model AssignmentForMCСSA.Data.Models.View.PaginationView
+@{
+}
+
+@if (Model.CountPage > 1)
+{
+    <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            @for (int i = 1; i <= Model.CountPage; i++)
+            {
+                if (i == Model.PageIndex)
+                {
+                    <li class="page-item active" href="/@Model.ControllerName/@Model.ActionName?currentPage=@i&critertion=@ViewData["Title"]">
+                        <span class="page-link">@i</span>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="/@Model.ControllerName/@Model.ActionName?currentPage=@i&critertion=@ViewData["Title"]">
+                            @i
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+}

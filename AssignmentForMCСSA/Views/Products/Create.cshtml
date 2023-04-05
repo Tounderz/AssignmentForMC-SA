@@ -1,0 +1,67 @@
+﻿@model AssignmentForMCСSA.Data.Models.Dto.ProductDto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h1>
+                @_localization.GetKey("InsertProduct")
+            </h1>
+            <form enctype="multipart/form-data" method="post" action="Create" class="mt-5">
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Title">
+                    <label>
+                        @_localization.GetKey("Title")
+                    </label>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="number" class="form-control" asp-for="Price">
+                    <label>
+                        @_localization.GetKey("Price")
+                    </label>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control" asp-for="Category">
+                    <label>
+                        @_localization.GetKey("Category")
+                    </label>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div class="form-floating mt-2">
+                    <textarea type="text" class="form-control" asp-for="Description" rows="3"></textarea>
+                    <label>
+                        @_localization.GetKey("Description")
+                    </label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="file" class="form-control" asp-for="Image">
+                    <label>
+                        @_localization.GetKey("Image")
+                    </label>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <hr />
+                <button class="btn btn-outline-primary" style="width: 10rem; border-radius: 10px" type="submit">
+                    @_localization.GetKey("Save")
+                </button>
+            </form>
+            <p class="mt-5 text-center">
+                <a asp-action="GetProducts">@_localization.GetKey("BackToList")</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

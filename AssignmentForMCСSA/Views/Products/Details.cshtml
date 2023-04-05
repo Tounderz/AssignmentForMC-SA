@@ -1,0 +1,63 @@
+﻿@model AssignmentForMCСSA.Data.Models.ProductModel
+@{
+}
+
+<div class="row">
+    <div class="col-6 card" style="width: 40rem">
+        <img class="card-img-top" style="height: 30rem; border-color: none" src="@Model.Image" />
+        <div class="card-body">
+            <h2 class="card-title">@_localization.GetKey("Title"): @Model.Title</h2>
+            <h3 class="card-title">@_localization.GetKey("Category"): @Model.Category</h3>
+            <h3 class="card-text">@_localization.GetKey("Price"): @Model.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</h3>
+        </div>
+        @if (User.IsInRole("admin"))
+        {
+            <div class="card-footer bg-transparent">
+                <a 
+                    class="btn btn-outline-primary"
+                    style="max-width: 10rem; border-radius: 10px" 
+                    asp-controller="Products" 
+                    asp-action="Edit" 
+                    asp-route-id="@Model.Id"
+                >
+                    @_localization.GetKey("Edit")
+                </a>
+                <button class="btn btn-outline-danger"
+                    style="width: 7rem; border-radius: 10px"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                >
+                    @_localization.GetKey("Delete")
+                </button>
+            </div>
+        }
+        
+    </div>
+    <div class="col-6">
+        <h1>@_localization.GetKey("Description")</h1>
+        <p>@Model.Description</p>
+    </div>
+    <p class="mt-5 text-center">
+        <a asp-action="GetProducts">@_localization.GetKey("BackToList")</a>
+    </p>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">@_localization.GetKey("DeleteProduct"): "@Model.Title"</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="myForm" asp-controller="Products" asp-action="Delete" method="post" asp-route-id="@Model.Id">
+                    <div class="form-group">
+                        <p>@_localization.GetKey("DeletetThisEntry")?</p>
+                    </div>
+                    <button type="submit" class="btn btn-outline-danger">@_localization.GetKey("Delete")</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

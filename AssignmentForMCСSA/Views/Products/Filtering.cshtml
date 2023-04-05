@@ -1,0 +1,21 @@
+﻿@model AssignmentForMCСSA.Data.Models.View.ProductView
+
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <div class="row">
+            @foreach (var item in Model.Products)
+            {
+                @await Html.PartialAsync("_ProductComponent", item)
+            }
+        </div>
+    </div>
+    @if (Model.Pagination.CountPage > 1)
+    {
+        <div class="row" style="margin-left: 50%; margin-right: 50%; margin-top: 2%">
+            @await Html.PartialAsync("_PaginationComponent", Model.Pagination)
+        </div>
+    }
+</div>
